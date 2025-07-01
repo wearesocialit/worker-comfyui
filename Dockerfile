@@ -56,8 +56,8 @@ WORKDIR /
 RUN uv pip install runpod requests websocket-client
 
 # Add application code and scripts
-ADD src/start.sh handler.py test_input.json ./
-RUN chmod +x /start.sh
+ADD src/start.sh src/restore_snapshot.sh handler.py test_input.json ./
+RUN chmod +x /start.sh /restore_snapshot.sh
 
 # Add script to install custom nodes
 COPY scripts/comfy-node-install.sh /usr/local/bin/comfy-node-install
@@ -70,6 +70,11 @@ ENV PIP_NO_INPUT=1
 COPY scripts/comfy-manager-set-mode.sh /usr/local/bin/comfy-manager-set-mode
 RUN chmod +x /usr/local/bin/comfy-manager-set-mode
 
+# Optionally copy the snapshot file
+ADD *snapshot*.json /
+# Restore the snapshot to install custom nodes
+RUN /restore_snapshot.sh
+
 # Set the default command to run when starting the container
 CMD ["/start.sh"]
 
@@ -78,7 +83,7 @@ FROM base AS downloader
 
 ARG HUGGINGFACE_ACCESS_TOKEN
 # Set default model type if none is provided
-ARG MODEL_TYPE=flux1-dev-fp8
+ARG MODEL_TYPE=base
 
 # Change working directory to ComfyUI
 WORKDIR /comfyui
