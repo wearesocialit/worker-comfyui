@@ -122,7 +122,7 @@ RUN \
         wget -q -O models/checkpoints/flux1-dev-fp8.safetensors https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors; \
     fi && \
     # --- Text Encoders common ---
-    if [ "$MODEL_TYPE" = "flux1-schnell" ] || [ "$MODEL_TYPE" = "flux1-dev" ] || [ "$MODEL_TYPE" = "full" ]; then \
+    if [ "$MODEL_TYPE" = "sdxl" ] || [ "$MODEL_TYPE" = "sd3" ] || [ "$MODEL_TYPE" = "flux1-schnell" ] || [ "$MODEL_TYPE" = "flux1-dev" ] || [ "$MODEL_TYPE" = "flux1-dev-fp8" ] || [ "$MODEL_TYPE" = "full" ]; then \
         echo "--> Downloading common text encoders..." && \
         wget -q -O models/clip/clip_l.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors && \
         wget -q -O models/clip/t5xxl_fp8_e4m3fn.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors; \
