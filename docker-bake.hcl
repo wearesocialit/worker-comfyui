@@ -29,6 +29,18 @@ target "base" {
   tags = ["${DOCKERHUB_REPO}/${DOCKERHUB_IMG}:${RELEASE_VERSION}-base"]
 }
 
+target "full" {
+  context = "."
+  dockerfile = "Dockerfile"
+  target = "final"
+  args = {
+    MODEL_TYPE = "full"
+    HUGGINGFACE_ACCESS_TOKEN = "${HUGGINGFACE_ACCESS_TOKEN}"
+  }
+  tags = ["${DOCKERHUB_REPO}/${DOCKERHUB_IMG}:${RELEASE_VERSION}-full"]
+  inherits = ["base"]
+}
+
 target "sdxl" {
   context = "."
   dockerfile = "Dockerfile"
