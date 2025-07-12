@@ -78,7 +78,7 @@ FROM base AS downloader
 
 ARG HUGGINGFACE_ACCESS_TOKEN
 # Set default model type if none is provided
-ARG MODEL_TYPE=full
+ARG MODEL_TYPE=base
 
 # Change working directory to ComfyUI
 WORKDIR /comfyui
