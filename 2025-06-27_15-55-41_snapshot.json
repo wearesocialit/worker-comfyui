@@ -72,6 +72,10 @@
         "https://github.com/ltdrdata/was-node-suite-comfyui": {
             "hash": "f86447721c18758d7b3b6ae5769f52344a3d764a",
             "disabled": false
+        },
+        "https://github.com/sipherxyz/comfyui-art-venture": {
+            "hash": "50abaace756b96f5f5dc2c9d72826ef371afd45e",
+            "disabled": false
         }
     },
     "cnr_custom_nodes": {
